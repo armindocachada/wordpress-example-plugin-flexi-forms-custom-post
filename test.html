@@ -67,6 +67,8 @@ function fieldAlreadySelected(field, select=null) {
 function selectField(select) {
 
     if (!fieldAlreadySelected(select.value,select=select)) {
+        console.log("select=" + select);
+        console.log("select.parentNode=" + select.parentNode);
         let inputFieldValue = select.parentElement.getElementsByClassName("fieldLabel")[0];
         inputFieldValue.name="_post_" + select.value;
         inputFieldValue.value=select.options[select.selectedIndex].text;
@@ -79,7 +81,7 @@ function selectField(select) {
         let inputFieldValue = select.parentElement.getElementsByClassName("fieldLabel")[0];
         let field_name = inputFieldValue;
         console.log("field_name=" + field_name);
-        old_select_value = field_name.substring("_post_".length);
+        old_select_value = field_name.value.substring("_post_".length);
         console.log("old_select_value=" + old_select_value);
         select.value=old_select_value;
         console.error("Field already selected!. Try to choose another field");
@@ -180,9 +182,12 @@ function add_field() {
         <input type="button" name="up"  onclick="up(this)" value="Up"/>
         <input type="button" name="down"  onclick="down(this)" value="Down"/>
       `;
+
+
+
      fieldSelector = div.getElementsByClassName("fieldSelector")[0];
-
-
+     console.log("Field Selector"+ fieldSelector);
+     console.log("Field Selector Parent"+ fieldSelector.parentElement);
      availableFields.forEach( (value, key, map) => {
          var option = document.createElement("option");
          option.text=value;
@@ -191,13 +196,13 @@ function add_field() {
       });
      fieldSelector.value="";
 
-
     console.log("test");
      // force the selectFunction to be called to initialise everything correctly
     firstAvailableField=selectFirstAvailableField(fieldSelector);
     if (firstAvailableField) {
+      fieldSelector.value=firstAvailableField;
+      selectField(fieldSelector);
       fields.appendChild(div);
-      selectField(firstAvailableField);
     }
 
     reorder_sequences();
