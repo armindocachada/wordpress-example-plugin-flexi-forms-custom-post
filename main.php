@@ -55,6 +55,7 @@ function add_post_meta_boxes() {
         "normal", // location on the screen
         "low" // placement priority
     );
+    wp_enqueue_script('test', plugin_dir_url(__FILE__) . 'test.js');
 }
 add_action( "admin_init", "add_post_meta_boxes" );
 
@@ -104,39 +105,42 @@ function post_meta_box_flexible_fields(){
     $field2Selected = $custom[ "_post_field2" ][ 0 ];
     $field3Selected = $custom[ "_post_field3" ][ 0 ];
 
+    echo "Field 1: $field2Selected";
 
-    $html = <<<EOT
-        <br/>
 
-        <input type="checkbox" name="_post_field1" value="checked" $field1Selected>
-        <label for="_post_field1">Field 1</label>
-        <input type="text" name="_post_field1_label" value="Field 1">
-        <input type="text" name="_post_field1_priority" value="0">
-        <br/>
+    require_once('test.php');
 
-        <input type="checkbox" name="_post_field2" value="checked" $field2Selected>
-        <label for="_post_field1">Field 2</label>
-        <input type="text" name="_post_field2_label" value="Field 2">
-        <input type="text" name="_post_field2_priority" value="1">
-
-        <br/>
-        <input type="checkbox" name="_post_field2" value="True" $field3Selected>
-        <label for="_post_field1">Field 3</label>
-        <input type="text" name="_post_field3_label" value="Field 3">
-         <input type="text" name="_post_field3_priority" value="2">
-        <br>
-        <select name=\"_post_field2\">
-            <option value=\"internal\" $internalSelected>Internal</option>
-            <option value=\"external\" $externalSelected>External</option>
-            <option value=\"mixed\" $mixedSelected>Mixed</option>
-        </select>
-        <br>
-        <select name=\"_post_field3\">
-            <option value=\"internal\" $internalSelected>Internal</option>
-            <option value=\"external\" $externalSelected>External</option>
-            <option value=\"mixed\" $mixedSelected>Mixed</option>
-        </select>
-
-    EOT;
-    echo $html;
+//     $html = <<<EOT
+//         <br/>
+//
+//         <input type="checkbox" name="_post_field1" value="checked" $field1Selected>
+//         <label for="_post_field1">Field 1</label>
+//         <input type="text" name="_post_field1_label" value="Field 1">
+//         <input type="text" name="_post_field1_priority" value="0">
+//         <br/>
+//
+//         <input type="checkbox" name="_post_field2" value="checked" $field2Selected>
+//         <label for="_post_field1">Field 2</label>
+//         <input type="text" name="_post_field2_label" value="Field 2">
+//         <input type="text" name="_post_field2_priority" value="1">
+//
+//         <br/>
+//         <input type="checkbox" name="_post_field2" value="True" $field3Selected>
+//         <label for="_post_field1">Field 3</label>
+//         <input type="text" name="_post_field3_label" value="Field 3">
+//          <input type="text" name="_post_field3_priority" value="2">
+//         <br>
+//         <select name=\"_post_field2\">
+//             <option value=\"internal\" $internalSelected>Internal</option>
+//             <option value=\"external\" $externalSelected>External</option>
+//             <option value=\"mixed\" $mixedSelected>Mixed</option>
+//         </select>
+//         <br>
+//         <select name=\"_post_field3\">
+//             <option value=\"internal\" $internalSelected>Internal</option>
+//             <option value=\"external\" $externalSelected>External</option>
+//             <option value=\"mixed\" $mixedSelected>Mixed</option>
+//         </select>
+//
+//     EOT;
 }

@@ -1,34 +1,3 @@
-<html>
-
-<body>
-    <div id="fields">
-<!--        <br/>-->
-
-<!--        <input type="checkbox" name="_post_field1" value="checked" $field1Selected>-->
-<!--        <label for="_post_field1">Field 1</label>-->
-<!--        <input type="text" name="_post_field1_label" value="Field 1">-->
-<!--        <input type="text" name="_post_field1_priority" value="0">-->
-<!--        <br/>-->
-
-<!--        <input type="checkbox" name="_post_field2" value="checked" $field2Selected>-->
-<!--        <label for="_post_field1">Field 2</label>-->
-<!--        <input type="text" name="_post_field2_label" value="Field 2">-->
-<!--        <input type="text" name="_post_field2_priority" value="1">-->
-
-<!--        <br/>-->
-<!--        <input type="checkbox" name="_post_field2" value="True" $field3Selected>-->
-<!--        <label for="_post_field1">Field 3</label>-->
-<!--        <input type="text" name="_post_field3_label" value="Field 3">-->
-<!--         <input type="text" name="_post_field3_priority" value="2">-->
-<!--        <br>-->
-
-
-    </div>
-
-       <input type="button" name="add_field"  onclick="add_field()" value="Add Field"/>
-
-
-<script>
 
 var availableFields = new Map([['field1', 'Field 1'], ['field2', 'Field 2'], ['field3', 'Field 3'],['field4', 'Field 4']]);
 
@@ -165,7 +134,7 @@ function down(button) {
    reorder_sequences();
 }
 
-function add_field() {
+function add_field_button() {
      let fields = document.getElementById("fields");
 
 
@@ -208,8 +177,3 @@ function add_field() {
     reorder_sequences();
 }
 
-</script>
-
-</body>
-
-</html>
